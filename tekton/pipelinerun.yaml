@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: cicd-pipeline-
+spec:
+  serviceAccountName: build-bot
+  pipelineRef:
+    name: cicd-pipeline
+  params:
+  - name: source-repo
+    value: https://github.com/cloud-native-garage-method-cohort/tomasz-boczek-buildah-assignment.git
+  - name: image-repo
+    value: quay.io/tomasz_boczek/buildah-assignment
+  - name: app-name
+    value: tomasz-boczek-react-app
+  - name: app-namespace
+    value: tomasz-boczek-tkn
+  workspaces:
+    - name: pipeline-ws1
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
