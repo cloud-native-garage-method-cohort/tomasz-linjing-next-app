@@ -15,9 +15,9 @@ RUN npm ci
 # Copies files from source to destination, in this case the root of the build context
 # into the root of the WORKDIR
 COPY . .
-
+RUN npm run build
 # Document that this container exposes something on port 3000
 EXPOSE 3000
 
 # Command to use for starting the application
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
