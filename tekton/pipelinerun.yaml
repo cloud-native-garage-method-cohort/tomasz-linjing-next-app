@@ -1,20 +1,20 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: cicd-pipeline-
+  generateName: e2e-pipeline-
 spec:
   serviceAccountName: build-bot
   pipelineRef:
-    name: cicd-pipeline
+    name: e2e-pipeline
   params:
   - name: source-repo
-    value: https://github.com/cloud-native-garage-method-cohort/tomasz-boczek-buildah-assignment.git
+    value: https://github.com/cloud-native-garage-method-cohort/tomasz-linjing-next-app.git
   - name: image-repo
-    value: quay.io/tomasz_boczek/buildah-assignment
+    value: quay.io/tomasz_boczek/e2e-assignment
   - name: app-name
-    value: tomasz-boczek-react-app
+    value: next-app
   - name: app-namespace
-    value: tomasz-boczek-tkn
+    value: tomasz-linjing-e2e
   workspaces:
     - name: pipeline-ws1
       volumeClaimTemplate:

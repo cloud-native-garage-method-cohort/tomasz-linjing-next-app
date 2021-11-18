@@ -26,17 +26,19 @@ spec:
       workspaces:
         - name: output
           workspace: pipeline-ws1
-    - name: test-nextjs
-      taskRef:
-        name: ###
-      params:
-        - name: ###
-          value: ###
-        - name: ###
-          value: ###
+    - name: run-tests
+      params: 
+      - name: ARGS
+        value: 
+        - install-ci-test 
       workspaces:
-        - name: ###
-          workspace: pipeline-ws1
+      - name: source
+        workspace: pipeline-ws1
+      taskRef:
+        name: npm
+        kind: Task
+      runAfter: 
+       - git-clone
     - name: build
       taskRef:
         name: buildah

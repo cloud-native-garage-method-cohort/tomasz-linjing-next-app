@@ -3,4 +3,4 @@ kind: ServiceAccount
 metadata:
   name: build-bot
 secrets:
-  - name: tomasz-boczek-t1000-pull-secret
+  - name: t1000-pull-secret
